@@ -3,39 +3,42 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import geckodriver_autoinstaller
+import os
 
-# Instalar o geckodriver automaticamente, se necessário
-geckodriver_autoinstaller.install()
+# Verificar se o geckodriver está instalado e, se não estiver, instalar localmente
+if not os.path.exists('geckodriver'):
+    geckodriver_autoinstaller.install()
 
 # Configurar o WebDriver para o Firefox
-driver = webdriver.Firefox()
+driver = webdriver.Firefox(executable_path='./geckodriver')
+
 with open("alergia.txt", "w") as output_file:
     with open("input.txt", "r") as input_file:
         for sequence in input_file:
             sequence = sequence.strip()
             
-            # Navigate to the website
+            # Navegar até o site
             driver.get('https://www.ddg-pharmfac.net/AllerTOP/')
 
-            # Find the textarea and input the sequence
+            # Encontrar a área de texto e inserir a sequência
             textarea = driver.find_element(By.NAME, "sequence")
             textarea.send_keys(sequence)
 
-            # Find and click the submit button
+            # Encontrar e clicar no botão de envio
             submit_button = driver.find_element(By.XPATH, "//input[@type='image']")
             submit_button.click()
 
-            # Wait for the results to be ready and locate the result element
-            wait = WebDriverWait(driver, 30)  # Adjust timeout as needed
+            # Aguardar os resultados estarem prontos e localizar o elemento de resultado
+            wait = WebDriverWait(driver, 30)  # Ajuste o tempo limite conforme necessário
 
             result_xpath = "//h4[contains(text(), 'Your sequence is:')]/following-sibling::h4[1]"
             result_element = wait.until(EC.visibility_of_element_located((By.XPATH, result_xpath)))
 
-            # Extract the result value
+            # Extrair o valor do resultado
             result_value = result_element.text
 
-            # Write the result to the output file
-            # output_file.write(f"Sequence: {sequence}\nResult: {result_value}")  # Corrected this line
+            # Escrever o resultado no arquivo de saída
+            # output_file.write(f"Sequence: {sequence}\nResult: {result_value}\n")
 
-# Close the browser
+# Fechar o navegador
 driver.quit()
