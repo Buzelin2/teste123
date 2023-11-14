@@ -6,11 +6,10 @@ import geckodriver_autoinstaller
 import os
 
 # Verificar se o geckodriver está instalado e, se não estiver, instalar localmente
-if not os.path.exists('geckodriver'):
-    geckodriver_autoinstaller.install()
+geckodriver_path = './geckodriver'
 
 # Configurar o WebDriver para o Firefox
-driver = webdriver.Firefox(executable_path='./geckodriver')
+driver = webdriver.Firefox(executable_path=geckodriver_path)
 
 with open("alergia.txt", "w") as output_file:
     with open("input.txt", "r") as input_file:
