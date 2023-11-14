@@ -32,7 +32,7 @@ with open("alergia.txt", "w") as output_file:
             result_value = result_element.text
 
             # Write the result to the output file
-            output_file.write(f"Sequence: {sequence}\nResult: {result_value}\n")  # Corrected this line
+            # output_file.write(f"Sequence: {sequence}\nResult: {result_value}\n")  # Corrected this line
 
 # Close the browser
 driver.quit()
