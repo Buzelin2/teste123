@@ -58,7 +58,7 @@ def process_protparam(driver, sequence, index):
 
         # Write results to file
         with open(PROTPARAM_RESULT_FILE_PATH, "a") as f:
-            f.write(f"{index}, {sequence}, {extracted_value}, {str(is_stable)}\n")
+            # f.write(f"{index}, {sequence}, {extracted_value}, {str(is_stable)}\n")
 
         return is_stable, (1 - float(extracted_value)/100)
 
