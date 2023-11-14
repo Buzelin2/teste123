@@ -3,8 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Set up the WebDriver
-driver = webdriver.Chrome()  # replace with your driver
+# Set up the WebDrivera
+driver = webdriver.Firefox()  # replace with your driver
 
 with open("alergia.txt", "w") as output_file:
     with open("input.txt", "r") as input_file:
@@ -32,7 +32,7 @@ with open("alergia.txt", "w") as output_file:
             result_value = result_element.text
 
             # Write the result to the output file
-            # output_file.write(f"Sequence: {sequence}\nResult: {result_value}\n")  # Corrected this line
+            output_file.write(f"Sequence: {sequence}\nResult: {result_value}\n")  # Corrected this line
 
 # Close the browser
 driver.quit()
