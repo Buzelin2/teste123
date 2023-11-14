@@ -25,16 +25,14 @@ with open("alergia.txt", "w") as output_file:
             # Wait for the results to be ready and locate the result element
             wait = WebDriverWait(driver, 30)  # Adjust timeout as needed
 
-
             result_xpath = "//h4[contains(text(), 'Your sequence is:')]/following-sibling::h4[1]"
             result_element = wait.until(EC.visibility_of_element_located((By.XPATH, result_xpath)))
-
 
             # Extract the result value
             result_value = result_element.text
 
             # Write the result to the output file
-            output_file.write(f"Sequence: {sequence}Result: {result_value}")
+            output_file.write(f"Sequence: {sequence}\nResult: {result_value}\n")  # Corrected this line
 
 # Close the browser
 driver.quit()
