@@ -2,10 +2,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import geckodriver_autoinstaller
 
-# Set up the WebDrivera
-driver = webdriver.Firefox()  # replace with your driver
+# Instalar o geckodriver automaticamente, se necessário
+geckodriver_autoinstaller.install()
 
+# Configurar o WebDriver para o Firefox
+driver = webdriver.Firefox()
 with open("alergia.txt", "w") as output_file:
     with open("input.txt", "r") as input_file:
         for sequence in input_file:
