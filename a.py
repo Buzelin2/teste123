@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # Set up the WebDrivera
-driver = webdriver.Firefox()  # replace with your driver
+driver = webdriver.Firefox(executable_path='/teste/teste123/geckodriver')  # replace with your driver
 
 with open("alergia.txt", "w") as output_file:
     with open("input.txt", "r") as input_file:
