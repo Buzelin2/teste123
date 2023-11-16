@@ -2,15 +2,16 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
-# Set up the WebDrivera
-driver = webdriver.Firefox(executable_path='/teste/teste123/geckodriver')  # replace with your driver
+# Set up the WebDriver
+driver = webdriver.Firefox()
 
 with open("alergia.txt", "w") as output_file:
     with open("input.txt", "r") as input_file:
         for sequence in input_file:
             sequence = sequence.strip()
-            
+
             # Navigate to the website
             driver.get('https://www.ddg-pharmfac.net/AllerTOP/')
 
